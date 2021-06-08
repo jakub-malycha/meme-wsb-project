@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import Meme from "./Meme";
+import Meme from "../Meme/Meme";
 
 const Regular = (props) => {
-  const memes = useSelector((state) => state.memes);
+  // const memes = useSelector((state) => state.memes);
   return (
     <Meme
-      memes={memes}
+      memes={props.memes}
       upvote={props.upvote}
       downvote={props.downvote}
       update={props.update}

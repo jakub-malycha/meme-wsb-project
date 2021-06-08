@@ -1,9 +1,8 @@
-import Meme from "./Meme";
-import { useSelector } from "react-redux";
+import Meme from "../Meme/Meme";
 
 const Hot = (props) => {
-  const memes = useSelector((state) => state.memes);
-  const filteredMemes = memes.filter((meme) => {
+  // const memes = useSelector((state) => state.memes);
+  const filteredMemes = props.memes.filter((meme) => {
     return meme.upvotes - meme.downvotes > 5;
   });
   return (

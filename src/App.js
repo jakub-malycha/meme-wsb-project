@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
-import Hot from "./components/Hot";
-import Navigation from "./components/Navigation";
-import Regular from "./components/Regular";
+import Hot from "./components/Hot/Hot";
+import Navigation from "./components/Navigation/Navigation";
+import Regular from "./components/Regular/Regular";
 
 function App() {
   const dispatch = useDispatch();
@@ -53,10 +52,20 @@ function App() {
             <Redirect to="/regular" />
           </Route>
           <Route exact path="/regular">
-            <Regular upvote={upvote} downvote={downvote} update={update} />
+            <Regular
+              memes={memes}
+              upvote={upvote}
+              downvote={downvote}
+              update={update}
+            />
           </Route>
           <Route exact path="/hot">
-            <Hot upvote={upvote} downvote={downvote} update={update} />
+            <Hot
+              memes={memes}
+              upvote={upvote}
+              downvote={downvote}
+              update={update}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
