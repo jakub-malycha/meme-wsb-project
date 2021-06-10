@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
+import Header from "./components/Header/Header";
 import Hot from "./components/Hot/Hot";
 import Navigation from "./components/Navigation/Navigation";
 import Regular from "./components/Regular/Regular";
@@ -44,7 +45,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1>projekt</h1>
+      <Header />
       <BrowserRouter>
         <Navigation />
         <Switch>

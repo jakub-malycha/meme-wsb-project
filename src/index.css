@@ -13,5 +13,6 @@ html {
 }
 
 body {
-  background-color: #3f3f3f;
+  background: linear-gradient(to right, #ffffff, #dcd3d3);
+  /* background: linear-gradient(to right, #f8bd4e, #ffe3ae); */
 }
