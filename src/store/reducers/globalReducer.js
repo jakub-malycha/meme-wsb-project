@@ -76,7 +76,7 @@ const initialState = {
 function globalReducer(state = initialState, action) {
   switch (action.type) {
     case "UPDATE": {
-      return { ...state, memes: action.payload };
+      return { ...state, memes: [...state.memes, action.payload] };
     }
     case "UPVOTE": {
       const newMemeList = [...state.memes];

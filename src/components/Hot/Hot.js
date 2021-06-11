@@ -10,7 +10,6 @@ const Hot = (props) => {
           return (
             <Meme
               key={meme.id}
-              // className={classes.container}
               title={meme.title}
               img={meme.img}
               upvotes={meme.upvotes}
@@ -18,7 +17,6 @@ const Hot = (props) => {
               upvote={props.upvote}
               downvote={props.downvote}
               id={meme.id}
-              // update={props.update}
             />
           );
         })}
