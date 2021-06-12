@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
-import Meme from "../Meme/Meme";
 import classes from "./MemeGenerator.module.css";
+import { Button, Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const MemeGenerator = (props) => {
-  //   const memes = useSelector((state) => state.memes);
   const [fetchedMemes, setFetchedMemes] = useState([]);
   const [memeIndex, setMemeIndex] = useState(0);
   const [captions, setCaptions] = useState([]);
@@ -24,6 +23,7 @@ const MemeGenerator = (props) => {
   };
 
   const generateMeme = () => {
+    if (captions.includes("")) return alert("Please fill all inputs");
     const currentMeme = fetchedMemes[memeIndex];
     const formData = new FormData();
 
@@ -40,14 +40,13 @@ const MemeGenerator = (props) => {
     }).then((res) => {
       res.json().then((res) => {
         const memeUrl = res.data.url;
-        //  history.push(`/generated?url=${res.data.url}`);
         console.log(memeUrl);
         return (currentMeme.img = memeUrl);
       });
     });
-    // props.update(fetchedMemes[memeIndex]);
     props.update(currentMeme);
     setMemeIndex(memeIndex + 1);
+    alert("Meme generated succesfully!!");
   };
 
   useEffect(() => {
@@ -60,13 +59,12 @@ const MemeGenerator = (props) => {
         const memesWithVotes = memes.map((meme) => {
           meme.title = meme.name;
           meme.img = meme.url;
-          meme.upvotes = Math.floor(Math.random() * 20 + 1);
-          meme.downvotes = Math.floor(Math.random() * 20 + 1);
+          meme.upvotes = 0;
+          meme.downvotes = 0;
           return meme;
         });
         shuffleMemes(memesWithVotes);
         setFetchedMemes(memesWithVotes);
-        // props.update(memesWithVotes);
       }
     );
   }, []);
@@ -88,15 +86,24 @@ const MemeGenerator = (props) => {
 
   return fetchedMemes.length ? (
     <div className={classes.container}>
-      <button onClick={generateMeme} className={classes.generate}>
-        Generate
-      </button>
-      <button
-        onClick={() => setMemeIndex(memeIndex + 1)}
-        className={classes.skip}
-      >
-        Skip
-      </button>
+      <Container style={{ width: "30%" }}>
+        <Button
+          variant="success"
+          onClick={generateMeme}
+          className={classes.generate}
+          block
+        >
+          Generate
+        </Button>
+        <Button
+          variant="warning"
+          onClick={() => setMemeIndex(memeIndex + 1)}
+          className={classes.skip}
+          block
+        >
+          Skip
+        </Button>
+      </Container>
       {captions.map((c, index) => (
         <input onChange={(e) => updateCaption(e, index)} key={index} />
       ))}
@@ -105,25 +112,6 @@ const MemeGenerator = (props) => {
   ) : (
     <></>
   );
-
-  // <div>
-  //   {memes
-  //     .filter((meme) => !(meme.upvotes - meme.downvotes > 5))
-  //     .map((meme) => {
-  //       return (
-  //         <Meme
-  //           key={meme.id}
-  //           title={meme.title}
-  //           img={meme.img}
-  //           upvotes={meme.upvotes}
-  //           downvotes={meme.downvotes}
-  //           upvote={props.upvote}
-  //           downvote={props.downvote}
-  //           id={meme.id}
-  //         />
-  //       );
-  //     })}
-  // </div>
 };
 
 export default MemeGenerator;

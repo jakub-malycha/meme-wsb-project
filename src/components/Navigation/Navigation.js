@@ -24,18 +24,30 @@ const Navigation = () => {
   return (
     <div className={classes.navContainer}>
       <ul>
-        <li className={`${classes.navLink} ${active.regular}`}>
-          <NavLink onClick={clickHandler} to="/regular">
+        <li>
+          <NavLink
+            className={`${classes.navLink} ${active.regular}`}
+            onClick={clickHandler}
+            to="/regular"
+          >
             Regular
           </NavLink>
         </li>
-        <li className={`${classes.navLink} ${active.hot}`}>
-          <NavLink onClick={clickHandler} to="/hot">
+        <li>
+          <NavLink
+            className={`${classes.navLink} ${active.hot}`}
+            onClick={clickHandler}
+            to="/hot"
+          >
             Hot
           </NavLink>
         </li>
-        <li className={`${classes.navLink} ${active.generate}`}>
-          <NavLink onClick={clickHandler} to="/generate">
+        <li>
+          <NavLink
+            className={`${classes.navLink} ${active.generate}`}
+            onClick={clickHandler}
+            to="/generate"
+          >
             Generate
           </NavLink>
         </li>

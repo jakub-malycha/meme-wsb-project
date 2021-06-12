@@ -1,33 +1,41 @@
-import classes from "./Meme.module.css";
+import { Card, Button, Container, Row } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Meme = (props) => {
   return (
-    <div className={classes.container}>
-      <div className={classes.title}>
-        <h2>{props.title}</h2>
-      </div>
-      <div className={classes.image}>
-        <img src={props.img} alt="Meme" />
-      </div>
-      <div className={classes.center}>
-        <button
-          className={classes.btnUp}
-          onClick={() => {
-            props.upvote(props.id);
-          }}
-        >
-          UPVOTES <span className={classes.votesNumber}>{props.upvotes}</span>
-        </button>
-        <button
-          className={classes.btnDown}
-          onClick={() => {
-            props.downvote(props.id);
-          }}
-        >
-          DOWNVOTES
-          <span className={classes.votesNumber}>{props.downvotes}</span>
-        </button>
-      </div>
+    <div>
+      <Card style={{ width: "27rem", marginBottom: "2rem" }}>
+        <Card.Title>{props.title}</Card.Title>
+        <Card.Img style={{ margin: "0" }} variant="top" src={props.img} />
+        <Container>
+          <Row
+            style={{
+              marginTop: "15px",
+              display: "flex",
+              flexWrap: "wrap",
+            }}
+          >
+            <Button
+              style={{ flex: "1" }}
+              onClick={() => {
+                props.upvote(props.id);
+              }}
+              variant="primary"
+            >
+              Upvotes {props.upvotes}
+            </Button>
+            <Button
+              style={{ flex: "1" }}
+              onClick={() => {
+                props.downvote(props.id);
+              }}
+              variant="danger"
+            >
+              Downvotes {props.downvotes}
+            </Button>
+          </Row>
+        </Container>
+      </Card>
     </div>
   );
 };

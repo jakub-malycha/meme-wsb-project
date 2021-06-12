@@ -6,7 +6,6 @@
 }
 
 img {
-  max-width: 500px;
   max-height: 500px;
   margin: auto;
   margin-top: 50px;
@@ -19,4 +18,9 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+input {
+  margin-top: 0.5rem;
+  border-radius: 5px;
 }
