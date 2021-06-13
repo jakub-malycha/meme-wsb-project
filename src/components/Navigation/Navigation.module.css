@@ -38,9 +38,10 @@
   .navContainer {
     width: 100%;
 
-    position: fixed;
+    position: sticky;
     z-index: 9999999 !important;
-    top: 5rem;
+    /* top: 5rem; */
+    top: 0;
   }
   .navContainer ul {
     display: flex;
